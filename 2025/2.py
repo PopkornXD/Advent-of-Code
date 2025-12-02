@@ -39,14 +39,11 @@ for id_range in id_range_list:
                 segment_len = len(i)//j
                 split = []
                 for k in range(0,j):
-                    split.append(i[k*segment_len:k*segment_len+segment_len])
-            
-                diff_num = []
-                for l in split:
-                    if (l not in diff_num):
-                        diff_num.append(l)
+                    segment = i[k*segment_len:k*segment_len+segment_len]
+                    if (segment not in split):
+                        split.append(segment)
                 
-                if (len(diff_num) == 1 and int(i) not in invalid_ids):
+                if (len(split) == 1 and int(i) not in invalid_ids):
                     invalid_ids.append(int(i))
 
 print(sum(invalid_ids))
